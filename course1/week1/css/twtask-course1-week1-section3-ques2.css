@@ -1,0 +1,63 @@
+.main {
+  width: 15%;
+  height: 20%;
+  margin: 0 auto;
+}
+
+.top {
+  background-color: red;
+  border-radius: 5px;
+}
+
+.top-left {
+  display: inline-block;
+}
+
+.top-left p {
+  margin: 8px;
+}
+
+.top-right {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 10px solid red;
+  border-top: 10px solid #fff;
+  position: relative;
+  top: 10px;
+}
+
+.mid {
+  width: 0;
+  height: 0;
+  border: 10px solid #fff;
+  border-bottom: 10px solid red;
+  position: relative;
+  left: 147px;
+}
+
+.bottom {
+  margin: 0;
+  border-radius: 5px;
+  background-color: red;
+}
+.bottom-options {
+  margin: 0;
+  padding: 0;
+}
+
+.bottom-options li {
+  list-style: none;
+}
+
+.bottom-options hr {
+  margin: 0;
+}
+
+.bottom-options-one {
+  width: 35px;
+  height: 35px;
+  background-color: #FFF;
+  display: inline-block;
+  background-image: url('../images/twtask-course1-week1-section3-ques2.png');
+}
