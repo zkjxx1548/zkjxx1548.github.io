@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.navigation {
+  display: flex;
+  width: 100%;
+  height: 12%;  
+  background-color: green;
+}
+
+.navigation-icon-return {
+  width: 10%;
+  height: 100%;
+  background-image: url('../images/icon-return.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: 80%;
+}
+
+.navigation-title {
+  width: 80%;
+  height: 100%;
+  position: relative;
+  left: 5%;
+  top: 22%;
+}
+
+.navigation-icon-cart {
+    width: 10%;
+    height: 100%;
+    background-image: url('../images/icon-shopping-cart.png');
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: 80%;
+  }
+
+.banner {
+  width: 100%;
+  height: 24%;  
+  background-color: red;
+}
+
+.tags {
+  width: 100%;
+  height: 18%;  
+  background-color: yellow;
+}
