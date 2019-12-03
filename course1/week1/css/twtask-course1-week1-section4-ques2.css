@@ -34,9 +34,10 @@ body {
   height: 100%;
   position: relative;
   left: 5%;
-  top: 20%;
-  font-size: 45px;
+  top: 15%;
+  font-size: 25px;
   color: white;
+  align-self: center;
 }
 
 .navigation-icon-cart {
@@ -106,14 +107,14 @@ body {
   border-style: solid solid solid solid;
   border-width: 1px;
   border-color: gray;
-  text-align: center;
   margin: 10px 10px 10px 10px;
+  display: flex;
 }
 
 .tags-content {
-  position: relative;
-  top: 24%;
   font-weight: 600;
+  align-self: center;
+  margin: 0 auto;
 }
 
 .tags-two {
