@@ -20,5 +20,7 @@ body {
 }
 
 .part1 > p {
- font-size: 92px;
+  font-size: 92px;
+  text-shadow: 0 7px 0 black;
+  color: white;
 }
