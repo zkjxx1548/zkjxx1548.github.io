@@ -4,7 +4,7 @@
 
 html {
   width: 100%;
-  height: 100%;
+  height: 1100px;
 }
 
 body {
@@ -13,14 +13,176 @@ body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
 
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1574909918777'); /* IE9 */
+  src: url('iconfont.eot?t=1574909918777#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAM0AAsAAAAABxQAAALnAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBeIF6ATYCJAMMCwgABCAFhG0HPBtGBsi+YjDGUM3rnshCKZ25cqafXqLarkN4h7w3vh+sE7bBXzIC+v1Y+wTVBkk0ahOPookhkbSaJBIhM52QoTTRJncXb/ofOOc6RKOOGYJbW9Oj/eJJ8gN+YC/91lo+o6LGlZ/kqxKpsmpnZy+7x/nJp6RclePxlaaIgxsUSsYZpJLzOwwwlJlTTgOKLW5Z7Dl+/i46bK3XT1BXx/oBdJZYYnxwdwwQ9bUuqKCC1BUhJdQ8xtZiXZ5rKEYcTpvngc2/y3Obe1CACQa6l0URDbEuMetDHPbKvE5ApXYKcHp4cZ0oyKx5AWEntipRyPllWUiVC0prtuZT8KiVx5s4bsPPh38mEEQlibV0YfvQSex8811aF1qfQDCfFcIuEgYAMmGz1r4hHccHwCo1aUavBZTKgjhXqAghX5eW2n94RIFQyiquBj2UiHzr8lNFKLzrqxIoRca8hAOWunmsNjYi51sFvlzvF776tx9HTVEiNXPGQhcrhm/e2sd6eGJ1jl8+Fdb/eyf92qNWD9uT5vAdV38nZb3Rahqr4O/raQmkiV93/3+k+5vr9U696Vc6Tvesyzp/yAC2JBQ0+3JJis/Aw79+n+ve1AedwSsbVdjRv0C5iCD4x235niffiSIrljJajLXbdSYdI6MRlXaIguVuVI1Xt7xHMijXkiIq04akXAcxUwdQosogSpUbQ6V+o91VmmTSQq5AnwMgqHdDVOsBSb0HMVOfKNHqhVL1AUaltSAfWaUrxFQvQyXogPMGsabYOCYpRaWXaJ9CxVlRSL9FXnohMEeTYuoYY+Q5VuTPdlaIgYApgiHchmFIkDD5qGUUiSzm+tjUPWnkUpQomcKQIpADON6AmEZixh8tSqX3X0LWk5DCLT017luILXnjA5PG6EE8lse9eu7lkdwza6YgDBBgJAKGYEWhHScgqZ/kQ5oYiUZEF+Z0Ghb0lY/WV0YfkCcMYJ2YQgwpZKWHcewqKqYliZKX0CUSAA==') format('woff2'),
+  url('iconfont.woff?t=1574909918777') format('woff'),
+  url('iconfont.ttf?t=1574909918777') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1574909918777#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .part1 {
   text-align: center;
   position: relative;
-  top: 13%;
+  top: 5%;
 }
 
 .part1 > p {
   font-size: 92px;
   text-shadow: 0 7px 0 black;
   color: white;
+  letter-spacing: 2.4px;
+}
+
+.part2 {
+  text-align: center;
+  position: relative;
+  top: 7%;
+}
+
+.part2 h3 {
+  margin: 18px;
+}
+
+.part2-content {
+  width: 30%;
+  height: 10%;
+  border-radius: 5px;
+  background-color: white;
+  margin: 0 auto;
+  color: red;
+  font-family: iconfont;
+  font-size: 20px;
+  padding: 17px;
+}
+
+.part2-content-icon-quotation1::before {
+  content: "\e654";
+}
+
+.part2-content-icon-quotation2::before {
+  content: "\e615";
+}
+
+.part3 {
+  text-align: center;
+  position: relative;
+  top: 10%;
+}
+
+.part3-boxs {
+  display: flex;
+  width: 80%;
+  height: 22%;
+  position: relative;
+  left: 10%;
+  font-family: Merriweather;
+}
+
+.part3-box {
+  width: 33.3%;
+  background-size: cover;
+  margin: 17px;
+  border: 10px solid white;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.part3-title {
+  height: 10%;
+  padding: 4%;
+}
+
+.part3-content {
+  height: 23%;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.part3-icon {
+  height: 33%;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+
+.part3-icon span {
+  padding: 6px;
+  background: black;
+}
+
+.part3-left {
+  background-image: url('../images/empire-state.png');
+  background-repeat: no-repeat;
+}
+
+.part3-left p, 
+.part3-mid p,
+.part3-right p {
+  display: none;
+}
+
+.part3-left:hover p {
+  background-color: rgba(58, 1, 132, 0.44);
+  display: block;
+}
+
+.part3-mid {
+  background-image: url('../images/midtown.png');
+  background-repeat: no-repeat;
+}
+
+.part3-mid:hover p {
+  display: block;
+}
+
+.part3-right {
+  background-image: url('../images/liberty.png');
+  background-repeat: no-repeat;
+}
+
+.part3-right:hover p {
+  background-color: rgba(255, 231, 179, 0.3);
+  display: block;
+}
+
+.part4 {
+  text-align: center;
+  position: relative;
+  top: 13%;
+}
+
+.part4-icon {
+  position: absolute;
+  left: 46%;
+  top: 10%;
+  border: 10px solid transparent;
+  border-bottom: 10px solid white;
+}
+
+.part4 h3 {
+  margin: 20px;
+}
+
+.part4-content {
+  background-color: white;
+  width: 36%;
+  height: 16%;
+  margin: 0 auto;
+  column-count: 3;
+  font-family: serif;
+  padding: 17px;
+  border-radius: 9px;
+  word-break: break-all;
+  text-align: start;
 }
