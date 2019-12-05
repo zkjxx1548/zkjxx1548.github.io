@@ -14,6 +14,7 @@
 2. 《CSS揭秘》扩展学习
 3. 《你不知道的JavaScript》微信读书
 4. 《图解HTTP》微信读书
+5. 搜 css 的属性https://www.zhangxinxu.com/wordpress/
 
 # retro
 
@@ -232,6 +233,8 @@ Git是目前最先进的分布式版本控制系统 vcs
 
 ## 2019.12.03
 
+***马欢欢***
+
 1. 文档流
 2. 块级元素
    * 独占一行
@@ -246,15 +249,28 @@ Git是目前最先进的分布式版本控制系统 vcs
 6. fixed
    * 根据视窗
    * 不占坑
-
 7. sticky
    * 暂时会随着动，等到了确定位置后，便不动
    * 脱离文档流，占原坑
-
 8. float
    * 行内文字会环绕，
    * 脱离文档流，不占坑
    * 清除浮动：给下方的块级加clear：left
+
+### 2019.12.05
+
+***马欢欢***
+
+1. left+inline-block+right
+2. absolute + margin + absolute
+3. flex
+4. inline-flex:块变行，并且采用flex
+5. span是行内元素
+6. flex-wrap
+7. justify-content: flex-start\flex-end\center\space-around\space-evenly\space-between
+8. space-around\space-evenly:一个是1:1,一个是1：2
+9. align-items:stretch:默认值，会撑开/baseline:按文字的基线居中
+10. order和flex-grow
 
 # 思沃学院
 
@@ -285,6 +301,8 @@ Git是目前最先进的分布式版本控制系统 vcs
 
 * 常规元素
 * 空元素
+
+
 
 # 周六线下
 
@@ -340,4 +358,6 @@ Git是目前最先进的分布式版本控制系统 vcs
 ## 二、作业
 
 实战题+关键字+博客copy+F12
+
+
 
