@@ -8,6 +8,13 @@
 
 **ZOOM** https://www.zoomus.cn/download 
 
+# 书籍
+
+1. 《Head First HTML & CSS》入门
+2. 《CSS揭秘》扩展学习
+3. 《你不知道的JavaScript》微信读书
+4. 《图解HTTP》微信读书
+
 # retro
 
 Well

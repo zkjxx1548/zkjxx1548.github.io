@@ -97,6 +97,7 @@ body {
   display: flex;
   flex-direction: column;
   color: white;
+  position: relative;
 }
 
 .part3-title {
@@ -131,6 +132,13 @@ body {
 .part3-mid p,
 .part3-right p {
   display: none;
+}
+
+.part3-box:hover hr {
+  width: 84%;
+  position: absolute;
+  top: 20%;
+  left: 8%;
 }
 
 .part3-left:hover p {
