@@ -52,11 +52,11 @@ body {
 
 .part2 {
   text-align: center;
-  margin-top: 18px;
+  margin-top: 40px;
 }
 
 .part2-content {
-  width: 37%;
+  width: 33%;
   border-radius: 5px;
   background-color: white;
   margin: 0 auto;
@@ -77,20 +77,19 @@ body {
 
 .part3 {
   text-align: center;
-  margin-top: 18px;
+  margin-top: 40px;
 }
 
 .part3-boxs {
   display: flex;
-  width: 80%;
   height: 22%;
   font-family: Merriweather;
-  margin-top: 18px;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  margin: 18px 7% 0 7%;
 }
 
 .part3-box {
-  width: 33.3%;
+  width: 25%;
   background-size: cover;
   border: 10px solid white;
   display: flex;
@@ -100,18 +99,18 @@ body {
 }
 
 .part3-title {
-  height: 10%;
+  height: 20%;
   padding: 4%;
 }
 
 .part3-content {
-  height: 23%;
+  height: 45%;
   font-size: 14px;
   font-style: italic;
 }
 
 .part3-icon {
-  height: 33%;
+  height: 35%;
   width: 100%;
   margin: 0 auto;
   color: white;
@@ -160,8 +159,9 @@ body {
 }
 
 .part3-right:hover {
-  background-color: rgba(255, 231, 179, 0.3);
+  background-color:#FFF8E8;
   background-image: none;
+  color: black;
 }
 
 .part3-right:hover p {
@@ -170,7 +170,8 @@ body {
 
 .part4 {
   text-align: center;
-  margin-top: 18px;
+  margin-top: 40px;
+  position: relative;
 }
 
 .part4-icon {
@@ -192,4 +193,8 @@ body {
   word-break: break-all;
   text-align: start;
   margin-top: 18px;
+}
+
+.part4-content p {
+  margin-bottom: 20px;
 }
