@@ -322,7 +322,15 @@ auto：设置列宽或行高自动等于它的内容的宽度或高度，
 
 %：设置列宽或行高自动等于它的内容的宽度或高度，
 
-grid-column-gap：间距
+grid-column-gap：列间距
+
+grid-row-gap:
+
+grid-gap:
+
+grid-column:控制网格列大小，以线为基准，写法：`1 / 3`
+
+grid-row
 
 # 周六线下
 
