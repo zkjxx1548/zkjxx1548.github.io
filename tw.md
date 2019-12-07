@@ -302,7 +302,27 @@ Git是目前最先进的分布式版本控制系统 vcs
 * 常规元素
 * 空元素
 
+### grid学习
 
+display：grid
+
+grid-template-columns:添加列。
+
+grid-template-rows:添加行。
+
+网格单位：
+
+px
+
+em
+
+fr：设置列或行占剩余空间的一个比例，
+
+auto：设置列宽或行高自动等于它的内容的宽度或高度，
+
+%：设置列宽或行高自动等于它的内容的宽度或高度，
+
+grid-column-gap：间距
 
 # 周六线下
 
