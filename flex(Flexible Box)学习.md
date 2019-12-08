@@ -1,4 +1,4 @@
-# flex(Flexible Box)学习
+## flex(Flexible Box)学习
 
 ### 定义
 
@@ -55,3 +55,24 @@
 5. `flex`：`grow`、`shrink`和`basis`的简写，默认`0 1 auto`,第一个必写。
 6. `align-self`：可覆盖`align-items`的属性，默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`。
 
+## grid
+
+### 画格子
+
+1. grid-template-rows + grid-template-columns
+   * fr
+   * px
+   * repeat
+   * minmax
+
+### 放
+
+1. grid-row-start+grid-row-end//grid-column-start+grid-column-end
+2. span(扩展)
+3. 区域定位：父grid-template-area+子grid-area
+
+### 排列
+
+1. justify-content
+2. align-content
+3. 配合响应式
