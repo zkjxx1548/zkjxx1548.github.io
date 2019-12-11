@@ -72,3 +72,86 @@
    * 第三处：`54`，`|`是位的或运算符，同时转化为二进制，每一位比较，只要有一个`1`，结果为`1`，否则为`0`。左边`34`的二进制为`00100010`，右边`54`的二进制为`00110110`，作`|`后为`001100110`。
    * 第四处：`54`，`||`是逻辑或运算符，只要左右为`false`，返回右边；只要左边为`true`，都返回左边。这里左边是`54`，为真，返回左边。
 
+## 1.2.4
+
+1. 判断成绩
+
+   ```js
+   var result;
+   if (result >= 95) {
+     console.log("卓越");
+   }else if (result >= 85) {
+     console.log("优秀");
+   }else if (result >= 75) {
+     console.log("一般");
+   }else if (result >=60) {
+     console.log("及格")
+   }else {
+     console.log("不及格")
+   }
+   
+   ```
+
+2. 简易计算器：
+
+   ```js
+   var x = 10, y = 8, operator;
+   switch (operator) {
+     case '+':
+       console.log(x + y);
+       break;
+     case '-':
+       console.log(x - y);
+       break;
+     case '*':
+       console.log(x * y);
+       break;
+     case '/':
+       console.log(x / y);
+       break;
+     case '%':
+       console.log(x % y);
+       break;
+   }
+   ```
+
+3. 累加1~100，跳过个位为3的数：
+
+   ```js
+   let n = 1;
+   let sum = 0;
+   while (n <= 100) {
+     if (n % 10 != 3) {
+       sum += n;
+     }
+     n++;
+   }
+   console.log(sum);
+   ```
+
+4. 打印`*`矩阵：
+
+   ```js
+   for (let i = 6; i > 0; i--) {
+     for (let j = i; j > 0; j--) {
+       console.log('*' + " ");
+     }
+     console.log('<br />');
+   }
+   ```
+
+5. 打印99乘法表：
+
+   ```
+   for (let i = 1; i < 10; i++) {
+     for (let j = 1; j <= i; j++) {
+       console.log(i + '*' + j + '=' + i*j + " ");
+     }
+     console.log('<br />');
+   }
+   ```
+
+   
+
+
+
