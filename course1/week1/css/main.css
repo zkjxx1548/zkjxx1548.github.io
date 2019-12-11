@@ -2,31 +2,40 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+ul {
+  margin: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
 }
 
 .main {
-  background-color: black;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .header {
   background-image: url('../images/starfield-banner.jpg');
   position: fixed;
-  width: 90%;
   top: 0;
   z-index: 100;
   display: flex;
+  width: inherit;
+  align-items: center;
 }
 
 .header .logo {
-  width:110px;
-  height: 110px;
-  background-image: url('../images/nasa-logo.svg');
+  width: auto;
+  height: 100px;
   background-repeat: no-repeat;
-  margin: 0;
 }
 
 .header-tags {
@@ -38,7 +47,6 @@ body {
 .header-tags li {
   color: white;
   padding: 10px;
-  list-style: none;
 }
 
 .header-tags-top {
@@ -80,32 +88,23 @@ body {
   flex-direction: row;
   align-self: center;
   padding: 8px;
-  background-color: gray;
-  width: fit-content;
+  background-color: #555555;
   font-size: 10px;
   margin-bottom: 10px;
-}
-
-.header-tags-bottom span {
-  color: white;
-  padding: 10px;
 }
 
 .header-tags-bottom .interaction {
   border-right: 1px solid white;
 }
 
-.header-tags-bottom-last {
-  border-right: 0px solid white;
+.mid {
+  margin-top: 9%;
 }
 
-
-.mid {
-  width: 90%;
+.mid-content {
   display: grid;
-  grid-template-columns: 24% 24% 24% 24%;
-  grid-gap: 1.3%;
-  margin-top: 9%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 15px;
 }
 
 .mid img {
@@ -129,18 +128,19 @@ body {
 }
 
 .grid-footer-title {
-  color: white;
-  background-color: violet;
+  padding-bottom: 5px;
+}
+
+.grid-footer-title span {
+  background-color: rgba(93, 127, 185, 0.85);
   padding: 5px;
-  width: fit-content;
-  margin: 0;
+  color: white;
 }
 
 .grid-footer-content {
   color: black;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 5px;
-  margin: 0;
 }
 
 .grid-1-1 {
@@ -155,17 +155,18 @@ body {
 .grid-1-3 {
   background-color: rgba(51, 143, 204, 0.5);
   color: white;
+  font-size: 10px;
 }
 
 .grid-1-3 p {
-  color: white;
-  font-size: 10px;
-  margin: 10px;
+  margin: 10px 5px 10px 5px;
 }
 
 .grid-1-3-title {
-  padding: 5px 0 5px 0;
+  padding: 0 0 5px 0;
   border-bottom: 1px solid white;
+  margin:10px 10px 0 10px;
+  display: block;
 }
 
 .grid-1-3-footer {
@@ -192,19 +193,17 @@ body {
 }
 
 .mid-more {
-  grid-column: 1 / 5;
-  background-color: blue;
+  background-color: rgb(21, 65, 140);
   color: white;
   padding: 5px;
-  margin: 20px 0 0 0;
   text-align: center;
+  margin-top: 20px;
 }
 
 .footer {
-  width: 90%;
   display: flex;
   flex-direction: column;
-  margin: 80px 0 40px 0;
+  margin: 20px 0 20px 0;
   color: white;
 }
 
@@ -221,13 +220,12 @@ body {
 .footer-top-info {
   display: flex;
   flex-direction: column;
-  margin: 0;
   font-size: 12px;
 }
 
 .footer-bottom {
+  display: flex;
   align-self: flex-end;
-  margin: 0;
 }
 
 .footer-info {
