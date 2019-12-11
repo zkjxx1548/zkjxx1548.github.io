@@ -109,10 +109,12 @@ p {
 
 .mid img {
   width: 100%;
+  height: 100%;
 }
 
 .mid video {
   width: 100%;
+  height: 100%;
 }
 
 .grid-box {
