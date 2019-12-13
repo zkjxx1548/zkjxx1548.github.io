@@ -305,5 +305,178 @@
 
 ## 1.2.6
 
+1. 常用字符串方法：
+
+   ```js
+   length//返回字符串长度
+   trim()//从字符串两端删除空白字符串，包括(space, tab, no-break space等)以及所有行终止符(如LF, CR等)
+   toLowerCase()//转化字符串为小写并返回
+   toUpperCase()//转化字符串为大写并返回
+   indexOf()//返回字符串第一次出现指定值在调用对象内的索引，从开始搜索
+   laseIndexOf()//返回字符串第一次出现指定值在调用对象内的索引，从末尾搜索
+   includes()//a.includes(b),在字符串a中去找把字符串，返回true和false
+   split()//使用指定的分隔符字符串将字符串对象分割成子字符串数组，指定的分割字符串决定每个拆分位置。
+   slice()//提取某字符转的一部分，并返回一个新字符串，原字符串不改动，允许开始索引为负，为负时，作为length + start处理，可以处理数组。
+   substring()//返回一个字符串在开始索引到结束索引之间的一个子集，或从从开始索引直到字符串末尾的一个子集，开始、结束索引为负时，当作0，不可以处理数组
+   replace()//返回一个由替换值（replacement）替换一些或所有匹配的模式（pattern）后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。
+   match()//检索字符串和正则表达式匹配的结果
+   matchAll()// 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
+   
+   ```
+
+2. 完成下面程序，将`name`变量中的字母全部转为为大写，输出出：`'HELLO'`。
+
+   ```js
+   var name = "hello";
+   var nameToUpper = function(name) {
+     return name.toUpperCase();
+   }
+   nameToUpper(name);
+   ```
+
+3. 完成下面程序，将sentence变量中的所有单词首字母变为大写，输出：'Good Afternoon, Mr Mike.'。
+
+   ```js
+   var sentence = "good afternoon, mr mike.";
+   var sentenceToUpperFirst = function(sentence) {
+     var words = sentence.split(' ');
+     var newSentence = "";
+     for (var i = 0; i < words.length; i++) {
+       words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1);
+       //newSentence = newSentence + words[i] + ' ';
+     }
+     //return newSentence.trim();
+     return words.join(' ');
+   }
+   sentenceToUpperFirst(sentence);
+   ```
+
+4. 完成下面程序，将money变量中的金额提取出来，输出：20。
+
+   ```js
+   var money = "￥20";
+   var moneyToValue = function(money) {
+     return parseInt(money.substring(1));
+   }
+   moneyToValue(money);
+   ```
+
+5. 编写函数 toCamelStyle, 满足`_`后面的首字母变大写，并删除`_`。
+
+   ```js
+   function toCamelStyle(str) {
+     var flag = 0;
+     if (str.substring(0, 1) === '_') {
+       str = str.substring(1);
+       flag = 1;
+     }
+     var words = str.split('_');
+     var newStr = words[0];
+     for(var i = 1; i < words.length; i++) {
+       words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1);
+       newStr += words[i];
+     }
+       
+     if (flag === 1) {
+       return '_' + newStr;
+     }
+     return newStr;
+   }
+   
+   toCamelStyle("abc_bcd"); //输出"abcBcd"
+   toCamelStyle('a_3_c_d_ef');  // 输出 'a3CDEf'
+   toCamelStyle('_a_b_c_d_ef');  // 输出 '_aBCDEf'
+   ```
+
+## 1.2.7
+
+1. 创建数组的方式：
+
+   * 使用Array构造函数
+
+     ```js
+     var a = new Array();
+     var b = new Array(5);  //创建长度为5的数组
+     var c = new Array("a","b","c");
+     ```
+
+   * 使用数组字面量表示法
+
+     ```js
+     var a = [];
+     var b = [5];
+     var c = ["a", "b", "c"];
+     ```
+
+2. 判断下列变量是不是数组类型：
+
+   ```js
+   var a = '[a, b, c, d]';//不是，这是一个字符串，且字符串写法错了，该用双引号包裹。
+   var b = [1, 2, 3, 4];//是，采用数组字面量表示法创建，且是number类型的数组。
+   ```
+
+3. 编写程序，将下面数组中的每一项都乘以2。
+
+   ```js
+   var a = [1, 2, 3, 4, 5];
+   for (var i = 0; i < a.length; i++) {
+     a[i] = a[i] * 2;
+   }
+   console.log(a);
+   ```
+
+4. 编写程序，按下面的要求输出结果。
+
+   ```js
+   var colors = ["Red", "Green", "White", "Black"];
+   console.log(colors.join(' '));
+   console.log(colors.join('+'));
+   console.log(colors.join(','));
+   ```
+
+5. 编写程序，将下面数组中的数字按从大到小的顺序排序。
+
+   ```js
+   var a = [5, 1, 8, 10, 4];
+   a.sort(function(a, b){
+     return b - a;
+   });
+   console.log(a.sort());
+   //这里sort是将数组对象转化为字符串比较，需要更改比较规则
+   ```
+
+6. 编程程序，找出下列数组中出现频率最高的元素。
+
+   ```js
+   var a = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+   var findTheMostElement = function(a) {
+     a.sort();
+     var index = 0;
+     var num = 0;
+     var maxIndex = 0;
+     var maxNum = 0;
+     for (var i = 0; i < a.length; i++) {
+       if (a[index] === a[i]) {
+         num++;
+       }else{
+         if(num > maxNum) {
+           maxNum = num;
+           maxIndex = index;
+         }
+         num = 1;
+         index = i;
+       }
+     }
+     if(num > maxNum) {
+       maxNum = num;
+       maxIndex = index;
+       }//判断最后一个元素的个数，更新maxIndex
+     return a[maxIndex];
+   }
+   console.log(findTheMostElement(a));
+   ```
+
+   
+
 
 
