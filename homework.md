@@ -629,4 +629,11 @@
    
    * 适用场景：两种
      1. JS原生态JSON使用，使用`JSON.stringify(object)`把前端的一个Object对象转化为字符串格式，传输到后端。
-     2. jQuery中使用，使用`$`
+     2. jQuery中使用，使用`$.parseJSON(JSONString)`把从后端接受的JSON字符串转换为Object对象便于前段使用，或者是使用`JSON.parse(JSONString)`达到同样的效果。
+
+7. 写一篇总结，关于JS对象基础，[简书链接](https://www.jianshu.com/p/0388df6298ed)
+
+## 1.3.2
+
+
+
