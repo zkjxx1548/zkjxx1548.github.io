@@ -476,7 +476,157 @@
    console.log(findTheMostElement(a));
    ```
 
+## 1.3.1
+
+1. 对象：一个包含数据和方法的集合（通常由一些变量和函数组成，称之为对象里面的属性和方法）。
+
+   创建对象的方式：
+
+   * 字面量表示法，使用key : value的形式直接创建:
+
+     ```js
+     var book = {};//创建一个没有属性的对象
+     var book = {
+       name : "zkj",
+       age : 24
+     };
+     ```
+
+   * 使用new关键字：
+
+     ```js
+     var book = new Object(); //创建一个没有属性的对象，具体创建出什么对象，要看使用的new的类。
+     ```
+
+2. 编程程序，完成需求：
+
+   * 创建一个空对象，变量名为user；
+
+     ```js
+     var user = {};
+     ```
+
+   * 添加一个 name 属性，并设置值为 John；
+
+     ```js
+     user.name = "John";
+     ```
+
+   * 添加一个 surname 属性，并设置其值为 Mike；
+
+     ```js
+     user.surname = "Mike";
+     ```
+
+   * 将 name 属性的值改为 Peter;
+
+     ```js
+     user.name = "Peter";
+     ```
+
+   * 删除 user 的 name 属性；
+
+     ```js
+     delete user.name;
+     ```
+
+3. 答案为`32`。因为创建了对象a，有两个属性name和age，有创建了属性和a一样的对象b，修改了对象b的age属性，不会影响对象a的age属性的值。
+
+4. 值？为什么？
+
+   `call`、`bind`、`apply`的区别：
+
+   1. `call`是一个一个传递值；`apply`是把需要传递的值放在一个数组进行操作，也相当于一个一个传递；`bind`是事先把函数的`this`改变为需要的结果，并准备好对应参数，但不会马上执行，需要用的时候立刻执行。（`bind`在IE6~8不兼容）
+   2. `call`可以将被操作的对象的`this`关键字变成`call`里面的参数，然后继续执行该对象，但是之后的`this`已经改变，相关的属性要变成对应的`this`的属性。
+
+   * 第一小题：
+
+     ```js
+     var name = 'window-Jack';
+     var person = {
+      name : 'person-Rose',
+      greeting: function() {
+        console.log('Hi! I\'m ' + this.name + '.');
+      }
+     }
+     var greeting = person.greeting;
+     greeting();
+     //值为"Hi! I'm window-Jack."因为在声明greeting函数时，指定其代码块为person对象的greeting方法的内容，这时的this为全局的，此时调用greeting函数，执行代码块，里面存在this.name,必然用到的是全局的name属性。
+     ```
+     
+   * 第二小题：
+
+     ```js
+    var name = 'window-Jack';
+     var person = {
+      name : 'person-Rose',
+      greeting: function() {
+        console.log('Hi! I\'m ' + this.name + '.');
+      }
+     }
+     var greeting = person.greeting.bind(person);
+     greeting();
+     //值为"Hi! I'm person-Rose."因为bind这里设置了函数greeting的this关键字为person，并且已经将对应参数配置好，调用greeting函数时，直接赋值。
+     ```
    
+   * 第三小题：
 
+     ```js
+    var name = 'window-Jack';
+     var person = {
+      name : 'person-Rose',
+      greeting: function() {
+        console.log('Hi! I\'m ' + this.name + '.');
+      }
+     }
+     person.greeting.apply(this);
+     //值为"Hi! I'm window-Jack."原因同第四小题，apply和call都立即改变this关键字。
+     
+     ```
+   
+   * 第四小题：
 
+     ```js
+    var name = 'window-Jack';
+     var person = {
+      name : 'person-Rose',
+      greeting: function() {
+        console.log('Hi! I\'m ' + this.name + '.');
+      }
+     }
+     person.greeting.call(this);
+     //值为"Hi! I'm window-Jack."因为函数greeting执行call方法后其this变为全局的this，在执行函数greeting时，里面的this.name是全局的name。
+     ```
 
+5. 编写程序，实现下列需求：计算下面 fruit 对象共有多少个水果，应该输出 50。
+
+   ```js
+   var fruit = {
+     apple: 20,
+     pear: 20,
+     peach: 10
+   };
+   var num = 0;
+   for (let key in fruit) {
+     num += fruit[key];
+   }
+   console.log(num);
+   ```
+
+6. 什么是 JSON？JSON 和 JavaScript 的关系以及 JSON 的适用场景是什么？
+
+   * 定义：JSON（JavaScript对象表示法）是用于将结构化数据表示为JavaScript对象的标准格式，通常用于在网站上表示和传输数据。
+     1. 基于JS语法，又独立于JS，多种环境可读取。
+     2. 可以作为对象或者字符串存在，前者用于解读数据，后者用于传输数据。
+     3. 一个JSON对象可以存储在自己的文件中，扩展名`.json`。
+
+   * 关系：
+     1. JSON对象基于JS对象，字符串，数字，数组、布尔及其他的字面值对象都可以写入JSON对象，使用`[]`访问对象内的数据。
+     2. JSON是纯数据格式，只有属性，没有方法，JS有属性和方法
+     3. JSON两头都有`{}`，规范和JS一样
+     4. JSON要求更严格，一个错位的逗号或者分号都能导致JSON文件出错。可用JSONLint程序来检测
+     5. 可以将任何标准合法的JSON数据格式化保存，只有字符串才能作属性，JS中标识符可以作属性。
+   
+   * 适用场景：两种
+     1. JS原生态JSON使用，使用`JSON.stringify(object)`把前端的一个Object对象转化为字符串格式，传输到后端。
+     2. jQuery中使用，使用`$`
