@@ -6,19 +6,19 @@
   position: relative;
 }
 
-.no-move {
+.boxs {
   width: 80px;
   height: 80px;
-  background-color: yellow;
   position: absolute;
-  right: 200px;
-  bottom: 200px;
+}
+
+.no-move {
+  background-color: yellow;
+  left: 720px;
+  top: 520px;
 }
 
 .move {
-  width: 80px;
-  height: 80px;
   background-color: green;
-  position: absolute;
-  cursor: move;
+  cursor: move;/*指定鼠标样式*/
 }
