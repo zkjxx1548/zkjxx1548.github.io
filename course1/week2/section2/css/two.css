@@ -1,4 +1,4 @@
-.main { 
+#main { 
   margin: 0 auto;
   width: 1000px;
   height: 800px;
@@ -12,13 +12,13 @@
   position: absolute;
 }
 
-.no-move {
+#no-move {
   background-color: yellow;
   left: 720px;
   top: 520px;
 }
 
-.move {
+#move {
   background-color: green;
   cursor: move;/*指定鼠标样式*/
 }
