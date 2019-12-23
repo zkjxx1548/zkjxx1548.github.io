@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
   // 商品列表 JSON 数据
   var carProducts = [
     {
@@ -47,33 +47,222 @@ window.onload = function() {
   var listCheck = document.getElementsByClassName('check');
   var listName = document.getElementsByClassName('name');
   var listPrice = document.getElementsByClassName('price');
-  var listNum = document.getElementsByClassName('num');
+  var listNum = document.getElementsByClassName('numbox');
   var listSubtotal = document.getElementsByClassName('subtotal');
   var listReduce = document.getElementsByClassName('reduce');
-  var listAllPrice = document.getElementsByClassName('allprice');
+  var listPlus = document.getElementsByClassName('plus');
+  var listAllCheck = document.getElementById('allcheck').getElementsByTagName('INPUT')[0];
+  var listAllPrice = document.getElementById('allprice');
+  var listLen = carProducts.length;
+  var allcheckFlag = 0;
 
-  var num;
-
-  for (var i = 0; i < carProducts.length; i++) {
-    if (carProducts[i]["checked"] === true) {
+  //初始化购物车table
+  for (var i = 0; i < listLen; i++) {
+    if (carProducts[i]["checked"] === true) 
       listCheck[i].getElementsByTagName('INPUT')[0].setAttribute("checked", "checked");
-    }else{
-      listCheck[i].getElementsByTagName('INPUT')[0].setAttribute("check", "");
-    }
     listName[i].innerHTML = carProducts[i]["name"];
     listPrice[i].innerHTML = carProducts[i]["price"];
-    listNum[i].getElementsByTagName('INPUT')[1].setAttribute("value", carProducts[i]["count"]);
-    listSubtotal[i].innerHTML = carProducts[i]["count"] * carProducts[i]["price"];
+    listNum[i].setAttribute("value", carProducts[i]["count"]);
+    subtotalPrice();
+    totalPrice();
   }
 
+  for (var i = 0; i < listLen; i++) {
+    listCheck[i].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+      if (carProducts[i].checked === true) {
+        carProducts[i].checked = false;
+      }else{
+        carProducts[i].checked = true;
+      }
+      totalPrice();
+    }, false);
+  }
+  
+  listCheck[0].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+    if (carProducts[0].checked === true) {
+      carProducts[0].checked = false;
+    }else{
+      carProducts[0].checked = true;
+    }
+    totalPrice();
+  }, false);
+
+  listCheck[1].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+    if (carProducts[1].checked === true) {
+      carProducts[1].checked = false;
+    }else{
+      carProducts[1].checked = true;
+    }
+    totalPrice();
+  }, false);
+
+  listCheck[2].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+    if (carProducts[2].checked === true) {
+      carProducts[2].checked = false;
+    }else{
+      carProducts[2].checked = true;
+    }
+    totalPrice();
+  }, false);
+
+  listCheck[3].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+    if (carProducts[3].checked === true) {
+      carProducts[3].checked = false;
+    }else{
+      carProducts[3].checked = true;
+    }
+    totalPrice();
+  }, false);
+
+  listCheck[4].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+    if (carProducts[4].checked === true) {
+      carProducts[4].checked = false;
+    }else{
+      carProducts[4].checked = true;
+    }
+    totalPrice();
+  }, false);
+  
+  listCheck[5].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
+    if (carProducts[5].checked === true) {
+      carProducts[5].checked = false;
+    }else{
+      carProducts[5].checked = true;
+    }
+    totalPrice();
+  }, false);
+
+  listReduce[0].addEventListener('click', function () {
+    if(carProducts[0].count > 0) {
+      carProducts[0].count--;
+      listNum[0].setAttribute("value", carProducts[0]["count"]);
+      subtotalPrice();
+      totalPrice();
+    }
+  });
+
+  listPlus[0].addEventListener('click', function () {
+    carProducts[0].count++;
+    listNum[0].setAttribute("value", carProducts[0]["count"]);
+    subtotalPrice();
+    totalPrice();
+  });
+
+  listReduce[1].addEventListener('click', function () {
+    if(carProducts[1].count > 0) {
+      carProducts[1].count--;
+      listNum[1].setAttribute("value", carProducts[1]["count"]);
+      subtotalPrice();
+      totalPrice();
+    }
+  });
+
+  listPlus[1].addEventListener('click', function () {
+    carProducts[1].count++;
+    listNum[1].setAttribute("value", carProducts[1]["count"]);
+    subtotalPrice();
+    totalPrice();
+  });
+
+  listReduce[2].addEventListener('click', function () {
+    if(carProducts[2].count > 0) {
+      carProducts[2].count--;
+      listNum[2].setAttribute("value", carProducts[2]["count"]);
+      subtotalPrice();
+      totalPrice();
+    }
+  });
+
+  listPlus[2].addEventListener('click', function () {
+    carProducts[2].count++;
+    listNum[2].setAttribute("value", carProducts[2]["count"]);
+    subtotalPrice();
+    totalPrice();
+  });
+
+  listReduce[3].addEventListener('click', function () {
+    if(carProducts[3].count > 0) {
+      carProducts[3].count--;
+      listNum[3].setAttribute("value", carProducts[3]["count"]);
+      subtotalPrice();
+      totalPrice();
+    }
+  });
+
+  listPlus[3].addEventListener('click', function () {
+    carProducts[3].count++;
+    listNum[3].setAttribute("value", carProducts[3]["count"]);
+    subtotalPrice();
+    totalPrice();
+  });
+
+  listReduce[4].addEventListener('click', function () {
+    if(carProducts[4].count > 0) {
+      carProducts[4].count--;
+      listNum[4].setAttribute("value", carProducts[4]["count"]);
+      subtotalPrice();
+      totalPrice();
+    }
+  });
+
+  listPlus[4].addEventListener('click', function () {
+    carProducts[4].count++;
+    listNum[4].setAttribute("value", carProducts[4]["count"]);
+    subtotalPrice();
+    totalPrice();
+  });
+
+  listReduce[5].addEventListener('click', function () {
+    if(carProducts[5].count > 0) {
+      carProducts[5].count--;
+      listNum[5].setAttribute("value", carProducts[5]["count"]);
+      subtotalPrice();
+      totalPrice();
+    }
+  });
+
+  listPlus[5].addEventListener('click', function () {
+    carProducts[5].count++;
+    listNum[5].setAttribute("value", carProducts[5]["count"]);
+    subtotalPrice();
+    totalPrice();
+  });
+
+  listAllCheck.addEventListener('click', function () {
+    if (allcheckFlag === 0) {
+      for (var i = 0; i < listLen; i++) {
+        carProducts[i].checked = true;
+        listCheck[i].getElementsByTagName('INPUT')[0].setAttribute("checked", "checked");
+      }
+      allcheckFlag = 1;
+    }else{
+      for (var i = 0; i < listLen; i++) {
+        carProducts[i].checked = false;
+        listCheck[i].getElementsByTagName('INPUT')[0].removeAttribute("checked");
+      }
+      allcheckFlag = 0;
+    }
+    totalPrice();
+  }, false);
+
+  //小计
+  function subtotalPrice() {
+    for (var i = 0; i < listLen; i++) {
+      listSubtotal[i].innerHTML = carProducts[i]["count"] * carProducts[i]["price"];
+    }
+  }
+
+  //共计
   function totalPrice() {
-    for (var i = 0; i < carProducts.length; i++) {
-      listSubtotal[i].innerHTML = parseInt(listNum[i].getElementsByTagName('INPUT')[1].getAttribute("value")) * parseInt(listPrice[i].innerHTML);
+    var allCount = 0;
+    var allPrice = 0;
+    for (var i = 0; i < listLen; i++) {
+      if (carProducts[i].checked === true) {
+        allCount += carProducts[i].count;
+        allPrice += carProducts[i].count * carProducts[i].price;
+      }
     }
+    listAllPrice.innerHTML = '共计' + allCount + '商品，' + allPrice + '￥';
   }
-
-  for (var i = 0; i < carProducts.length; i++) {
-    listReduce[i].addEventListener('click', )
-    }
-  }
+  
 };
