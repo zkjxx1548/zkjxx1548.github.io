@@ -300,6 +300,7 @@
    /*
    函数的toString方法会返回一个表示函数源代码的字符串，包括function关键字，形参列表，大括号，以及函数体中的内容。如果调用者不是函数，会报错。这里调用者为add1。函数add返回函数add1，如果add1没有参数了，则add1返回的是add(a)；接下来顺序调用add1的toString函数，返回其参数列表a。
    */
+   ```
 ```
    
    
@@ -323,7 +324,7 @@
    match()//检索字符串和正则表达式匹配的结果
    matchAll()// 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
    
-   ```
+```
 
 2. 完成下面程序，将`name`变量中的字母全部转为为大写，输出出：`'HELLO'`。
 
@@ -634,5 +635,104 @@
 
 7. 写一篇总结，关于JS对象基础，[简书链接](https://www.jianshu.com/p/0388df6298ed)
 
-## 1.3.2
+## 1.3.4
+
+1. 总结Ajax请求共有多少种回调？
+
+   五种：
+
+   * `beforeSend`：在发送请求之前调用，并且传入一个`XMLHttpRequest` 作为参数。
+   * `error`：在请求出错时调用。传入 `XMLHttpRequest` 对象，描述错误类型的字符串以及一个异常对象（如果有的话）
+   * `dataFilter`：在请求成功之后调用。传入返回的数据以及 `dataType` 参数的值，并且必须返回新的数据（可能是处理过的）传递给 `success` 回调函数。
+   * `success`：当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+   * `complete`：当请求完成之后调用这个函数，无论成功或失败。传入 `XMLHttpRequest` 对象，以及一个包含成功或错误代码的字符串。
+
+2. 编程实现，创建一个名为 ajax 的 XHR 对象
+
+   ```js
+   let ajax = {
+     request(url, method, callback, params) {
+       var xhr = new XMLHttpRequest();
+       xhr.onreadystatechange = (function (myxhr) {
+         return function() {
+           if (myxhr.readyState === 4 && myxhr.status === 200) {
+             callback(myxhr);
+           }
+         }
+       })(xhr);
+       xhr.open(method, url, true);
+       xhr.send(params || '');
+     }
+   }
+   
+   function myCallback(xhr) { 
+      alert(xhr.responseText); 
+    }
+    ajax.request(“somefile.txt”, ”get”, myCallback);
+    ajax.request(“script.php”, ”post”, myCallback, ”first=John&last=Smith”);
+   ```
+
+3. 造成跨域的原因有哪些？
+   * 同源策略：浏览器上为安全性考虑实施的非常重要的安全策略。两个页面地址中的协议、域名和端口号一致，则表示同源。
+   * 协议、端口、和域名有任意一个不同就会造成跨域。
+   * 一个为ip地址，一个为域名地址，进行的访问行动也是跨域的，不允许跨域请求资源。如：localhost和127.0.0.1虽然都指向本机，但也属于跨域。
+
+4. 有哪些办法可以解决跨域？
+
+   5种：
+
+   * 响应头添加`Header`允许访问
+
+     这个跨域访问的解决方案的安全基础是基于"JavaScript无法控制该HTTP头"。它需要通过目标域返回的HTTP头来授权是否允许跨域访问。
+
+     ```js
+     response.addHeader(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 
+     response.addHeader(‘Access-Control-Allow-Method:POST,GET’);//允许访问的方式
+     ```
+
+   * `jsonp` 只支持`get`请求，不支持`post`请求
+     1. dataType改为jsonp
+     2. jsonp : "jsonpCallback"
+     3. 后端获取get请求中的jsonpCallback
+     4. 构造回调结构
+
+   * `httpClient`内部转发
+     在原站点中ajax请求访问原站点的HttpClient，再通过HttpClient转发请求获取目标站点的数据结果。这种方式产生了两次请求，效率低，但属于内部请求，抓包工具无法分析，安全。
+
+   * 使用`nginx`搭建企业级接口网关方式
+
+     两次请求，第一次请求nginx服务器，第二次nginx服务器通过拦截匹配分发到对应的网址。
+
+   * 使用`Spring Cloud zuul`接口网关
+
+5. 有一个方法，可以避免每次请求重复去写创建 XHR 的整个过程，请求方法现只考虑 `POST` 和 `GET`，要求默认请求方法是 `GET`
+
+   ```js
+   function ajax(params) {   
+     params = params || {};   
+     params.data = params.data || {};   
+     var json = params.jsonp ? jsonp(params) : json(params);
+     function json(params) {   
+       params.type = (params.type || 'GET').toUpperCase(); 
+       params.data = formatParams(params.data);   
+       var xhr = new XMLHttpRequest();
+     }
+    
+     function ajax(url, success, fail){
+       var xhr = new XMLHttpRequest();
+       xhr.open('get', url, true)
+       xhr.send(null);
+       xhr.onreadystatechange = function(){
+         if(xhr.readyState == 4){
+           if(xhr.status == 200)
+             success(xhr.responseText);
+           else 
+             fail && fail(xhr.status);
+         }
+       }
+     }
+   }
+   ```
+
+
 
