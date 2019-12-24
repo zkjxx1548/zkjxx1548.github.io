@@ -1,0 +1,36 @@
+#shop {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+}
+
+#shop input {
+  text-align: center;
+}
+
+#shop-name {
+  font-size: 32px;
+}
+
+#shop-table {
+  width: 100%;
+}
+
+#shop-table td,
+#shop-table th {
+  padding: 15px;
+  border: 1px solid gray;
+}
+
+#shop-title th {
+  background-color: rgba(0, 0, 255, 0.2);
+}
+
+.numbox {
+  width: 20px;
+  border: 0;
+}
+
+#allprice {
+  text-align: end;
+}
