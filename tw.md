@@ -451,8 +451,16 @@ grid-row
 19. 输入输出(完成主体逻辑部分即可)
     * 输入: var x = []
     * 输出: console.log()
-
 20. 理论题多谈自己的想法
+
+## 2019.12.21
+
+1. ajax的send的跨域问题
+2. dom2的
+3. 排序：
+   * bubbleSort
+   * quickSort
+   * insertSort
 
 # 效率
 
