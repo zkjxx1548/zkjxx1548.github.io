@@ -11,14 +11,14 @@
 }
 
 .main label {
-display: flex;
-flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .main label > span {
-width: 70px;
+  width: 70px;
 }
 
 #log-in {
-width: 50px;
+  width: 50px;
 }
