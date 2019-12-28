@@ -494,6 +494,50 @@ grid-row
    * quickSort
    * insertSort
 
+## 2019.12.28
+
+### dom2-shoppingcar
+
+1. 使用caption，thead，tbody等提高语义化
+2. 每次变动都全局刷新渲染，资源消耗大
+3. 函数命名
+   * 渲染
+   * 设置按钮的监听，可以用：addEvent的命名
+
+
+4. input里面的checked用boolean判断是否预选
+
+   ```
+   if (input.checked === true)
+   	console.log("预选");
+   if (input.checked === false)
+     console.log("未预选");
+   ```
+
+   
+
+### todolist
+
+1. 缓存存一个数组key，每次操作数组去使用数据。
+2. 数据存的是dom，导致结构复杂
+3. key里面的对象的状态属性名为complete，值为布尔值。
+
+### ajax
+
+1. 创建顺序
+
+2. sucess传入的是JSON
+
+3. 路径上传参？
+
+4. JSON与字符串转化
+
+   JSON.parse(text):将JSON字符串转化为JS对象。
+
+   JSON.stringify(obj):将JS对象转化为JSON字符串。
+
+5. 关于xhr的status状态的值
+
 # 效率
 
 ## 一、vsc
@@ -509,6 +553,10 @@ grid-row
 
 
 https://zoom.com.cn/j/906610602?pwd=UzB6Mjk2c0xpT0IWL2hRNUhMRHIxdz09
+
+# 通知
+
+* 2020.1.11进行面试，现场代码
 
 
 

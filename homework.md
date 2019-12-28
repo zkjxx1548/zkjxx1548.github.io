@@ -301,29 +301,24 @@
    函数的toString方法会返回一个表示函数源代码的字符串，包括function关键字，形参列表，大括号，以及函数体中的内容。如果调用者不是函数，会报错。这里调用者为add1。函数add返回函数add1，如果add1没有参数了，则add1返回的是add(a)；接下来顺序调用add1的toString函数，返回其参数列表a。
    */
    ```
-```
-   
-   
-
 ## 1.2.6
 
 1. 常用字符串方法：
 
-   ```js
-   length//返回字符串长度
-   trim()//从字符串两端删除空白字符串，包括(space, tab, no-break space等)以及所有行终止符(如LF, CR等)
-   toLowerCase()//转化字符串为小写并返回
-   toUpperCase()//转化字符串为大写并返回
-   indexOf()//返回字符串第一次出现指定值在调用对象内的索引，从开始搜索
-   laseIndexOf()//返回字符串第一次出现指定值在调用对象内的索引，从末尾搜索
-   includes()//a.includes(b),在字符串a中去找把字符串，返回true和false
-   split()//使用指定的分隔符字符串将字符串对象分割成子字符串数组，指定的分割字符串决定每个拆分位置。
-   slice()//提取某字符转的一部分，并返回一个新字符串，原字符串不改动，允许开始索引为负，为负时，作为length + start处理，可以处理数组。
-   substring()//返回一个字符串在开始索引到结束索引之间的一个子集，或从从开始索引直到字符串末尾的一个子集，开始、结束索引为负时，当作0，不可以处理数组
-   replace()//返回一个由替换值（replacement）替换一些或所有匹配的模式（pattern）后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。
-   match()//检索字符串和正则表达式匹配的结果
-   matchAll()// 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
-   
+```
+length//返回字符串长度
+trim()//从字符串两端删除空白字符串，包括(space, tab, no-break space等)以及所有行终止符(如LF, CR等)
+toLowerCase()//转化字符串为小写并返回
+toUpperCase()//转化字符串为大写并返回
+indexOf()//返回字符串第一次出现指定值在调用对象内的索引，从开始搜索
+laseIndexOf()//返回字符串第一次出现指定值在调用对象内的索引，从末尾搜索
+includes()//a.includes(b),在字符串a中去找把字符串，返回true和false
+split()//使用指定的分隔符字符串将字符串对象分割成子字符串数组，指定的分割字符串决定每个拆分位置。
+slice()//提取某字符转的一部分，并返回一个新字符串，原字符串不改动，允许开始索引为负，为负时，作为length + start处理，可以处理数组。
+substring()//返回一个字符串在开始索引到结束索引之间的一个子集，或从从开始索引直到字符串末尾的一个子集，开始、结束索引为负时，当作0，不可以处理数组
+replace()//返回一个由替换值（replacement）替换一些或所有匹配的模式（pattern）后的新字符串。模式可以是一个字符串或者一个正则表达式，替换值可以是一个字符串或者一个每次匹配都要调用的回调函数。
+match()//检索字符串和正则表达式匹配的结果
+matchAll()// 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
 ```
 
 2. 完成下面程序，将`name`变量中的字母全部转为为大写，输出出：`'HELLO'`。
@@ -668,8 +663,8 @@
    function myCallback(xhr) { 
       alert(xhr.responseText); 
     }
-    ajax.request(“somefile.txt”, ”get”, myCallback);
-    ajax.request(“script.php”, ”post”, myCallback, ”first=John&last=Smith”);
+    ajax.request("somefile.txt", "get", myCallback);
+    ajax.request("script.php", "post", myCallback, "first=John&last=Smith");
    ```
 
 3. 造成跨域的原因有哪些？
@@ -686,8 +681,9 @@
      这个跨域访问的解决方案的安全基础是基于"JavaScript无法控制该HTTP头"。它需要通过目标域返回的HTTP头来授权是否允许跨域访问。
 
      ```js
-     response.addHeader(‘Access-Control-Allow-Origin:*’);//允许所有来源访问 
-     response.addHeader(‘Access-Control-Allow-Method:POST,GET’);//允许访问的方式
+     response.addHeader("Access-Control-Allow-Origin:*");//允许所有来源访问 
+     response.addHeader("Access-Control-Allow-Method:POST,GET");//允许访问的方式
+     设置headers的内容？content-type，常用的headers？
      ```
 
    * `jsonp` 只支持`get`请求，不支持`post`请求

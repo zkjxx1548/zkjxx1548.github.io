@@ -12,6 +12,29 @@
     </script>
   </head>
   <body>
-
+    <input type="checkbox" checked="false" />
+    <input type="checkbox" checked="true" />
+    <input type="checkbox" check="false" />
+    <input type="checkbox" check="true" />
+    <input type="checkbox" check="checked" />
+    <input type="checkbox" check="" />
+    <input type="checkbox" checked="check" />
+    <input type="checkbox" checked="checked" />
+    <input type="checkbox" checked="checked" />
+    <input type="checkbox" checked="" />
+    <input type="checkbox" checked />
+    <input type="checkbox"  />
+    <script>
+      input10 = document.getElementsByTagName("INPUT")[10];
+      if (input10.checked === true)
+        console.log("true");
+      else
+        console.log("false")
+      input11 = document.getElementsByTagName("INPUT")[11];
+      if (input11.checked === true)
+        console.log("true");
+      else
+        console.log("false")
+    </script>
   </body>
 </html>

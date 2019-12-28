@@ -44,225 +44,101 @@ window.onload = function () {
       "checked": false
     }
   ]
-  var listCheck = document.getElementsByClassName('check');
-  var listName = document.getElementsByClassName('name');
-  var listPrice = document.getElementsByClassName('price');
-  var listNum = document.getElementsByClassName('numbox');
-  var listSubtotal = document.getElementsByClassName('subtotal');
-  var listReduce = document.getElementsByClassName('reduce');
-  var listPlus = document.getElementsByClassName('plus');
-  var listAllCheck = document.getElementById('allcheck').getElementsByTagName('INPUT')[0];
-  var listAllPrice = document.getElementById('allprice');
-  var listLen = carProducts.length;
-  var allcheckFlag = 0;
+  var tbody = document.querySelector('tbody');
+  const tableShop = document.querySelector('table');
+  const listLen = carProducts.length;
 
   //初始化购物车table
   for (var i = 0; i < listLen; i++) {
-    if (carProducts[i]["checked"] === true) 
-      listCheck[i].getElementsByTagName('INPUT')[0].setAttribute("checked", "checked");
-    listName[i].innerHTML = carProducts[i]["name"];
-    listPrice[i].innerHTML = carProducts[i]["price"];
-    listNum[i].setAttribute("value", carProducts[i]["count"]);
-    subtotalPrice();
-    totalPrice();
+    tbody.innerHTML += "<tr class='list" + carProducts[i].id + "'></tr>";
+    //Selector是css选择器，list要加'.'
+    var name = ".list" + carProducts[i].id;
+    var listTr = document.querySelector(name);
+    listTr.innerHTML = "<td>"
+    + "<input class='check' type='checkbox'" + isHadGet(carProducts[i].checked) + "/>"
+    + "</td>"
+    + "<td>" + carProducts[i].name + "</td>"
+    + "<td class='price'>" + carProducts[i].price + "</td>"
+    + "<td>"
+    + "<input class='reduce' type='button' value='-' />"
+    + "<span class='num'>" + carProducts[i].count + "</span>"
+    + "<input class='plus' type='button' value='+' />"
+    + "</td>"
+    + "<td class='subtotal'>" + carProducts[i].price * carProducts[i].count + "</td>";
   }
+  tbody.innerHTML += "<td>"
+  + "<span>全选</span>"
+  + "<input id='checkAll' type='checkbox' />"
+  + "</td>"
+  + "<td id='allPriceContent' colspan='4'>共计"
+  + "<span id='allCount'>3</span>件商品，"
+  + "<span id='allPrice'>210</span>￥"
+  + "</td>";
 
-  for (var i = 0; i < listLen; i++) {
-    listCheck[i].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-      if (carProducts[i].checked === true) {
-        carProducts[i].checked = false;
-      }else{
-        carProducts[i].checked = true;
+  //监听tableShop
+  tableShop.addEventListener("click", function (e) {
+    //e.target指被点击的元素
+    if (e.target.className === "check") {
+      isAllCheck();
+      updateAllPriceContent();
+    }
+    if (e.target.id === "checkAll") {
+      var checks = document.querySelectorAll('.check');
+      for (var i = 0; i < checks.length; i++) 
+        checks[i].checked = e.target.checked;
+      updateAllPriceContent();
+    }
+    if (e.target.className === "reduce" || e.target.className === "plus") {
+      var nodeOfTr = e.target.parentNode.parentNode;
+      var listNum = 0;
+      if (e.target.className === "reduce") {
+        listNum = parseInt(e.target.nextElementSibling.innerHTML) - 1;
+        if (listNum === 0) 
+          nodeOfTr.parentNode.removeChild(nodeOfTr);
+        else
+          e.target.nextElementSibling.innerHTML = listNum;
       }
-      totalPrice();
-    }, false);
-  }
+      if (e.target.className === "plus") {
+        listNum = parseInt(e.target.previousElementSibling.innerHTML) + 1;
+        e.target.previousElementSibling.innerHTML = listNum;
+      }
+      var listPrice = parseInt(nodeOfTr.querySelector('.price').innerHTML);
+      var listSubtotoal = listNum * listPrice;
+      //更新小计
+      nodeOfTr.querySelector('.subtotal').innerHTML = listSubtotoal;
+      updateAllPriceContent();
+    }
+  });
   
-  listCheck[0].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-    if (carProducts[0].checked === true) {
-      carProducts[0].checked = false;
-    }else{
-      carProducts[0].checked = true;
-    }
-    totalPrice();
-  }, false);
+  function isHadGet(val) {
+    return val ? "checked" : "";
+  }
 
-  listCheck[1].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-    if (carProducts[1].checked === true) {
-      carProducts[1].checked = false;
-    }else{
-      carProducts[1].checked = true;
-    }
-    totalPrice();
-  }, false);
-
-  listCheck[2].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-    if (carProducts[2].checked === true) {
-      carProducts[2].checked = false;
-    }else{
-      carProducts[2].checked = true;
-    }
-    totalPrice();
-  }, false);
-
-  listCheck[3].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-    if (carProducts[3].checked === true) {
-      carProducts[3].checked = false;
-    }else{
-      carProducts[3].checked = true;
-    }
-    totalPrice();
-  }, false);
-
-  listCheck[4].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-    if (carProducts[4].checked === true) {
-      carProducts[4].checked = false;
-    }else{
-      carProducts[4].checked = true;
-    }
-    totalPrice();
-  }, false);
-  
-  listCheck[5].getElementsByTagName('INPUT')[0].addEventListener('click', function () {
-    if (carProducts[5].checked === true) {
-      carProducts[5].checked = false;
-    }else{
-      carProducts[5].checked = true;
-    }
-    totalPrice();
-  }, false);
-
-  listReduce[0].addEventListener('click', function () {
-    if(carProducts[0].count > 0) {
-      carProducts[0].count--;
-      listNum[0].setAttribute("value", carProducts[0]["count"]);
-      subtotalPrice();
-      totalPrice();
-    }
-  });
-
-  listPlus[0].addEventListener('click', function () {
-    carProducts[0].count++;
-    listNum[0].setAttribute("value", carProducts[0]["count"]);
-    subtotalPrice();
-    totalPrice();
-  });
-
-  listReduce[1].addEventListener('click', function () {
-    if(carProducts[1].count > 0) {
-      carProducts[1].count--;
-      listNum[1].setAttribute("value", carProducts[1]["count"]);
-      subtotalPrice();
-      totalPrice();
-    }
-  });
-
-  listPlus[1].addEventListener('click', function () {
-    carProducts[1].count++;
-    listNum[1].setAttribute("value", carProducts[1]["count"]);
-    subtotalPrice();
-    totalPrice();
-  });
-
-  listReduce[2].addEventListener('click', function () {
-    if(carProducts[2].count > 0) {
-      carProducts[2].count--;
-      listNum[2].setAttribute("value", carProducts[2]["count"]);
-      subtotalPrice();
-      totalPrice();
-    }
-  });
-
-  listPlus[2].addEventListener('click', function () {
-    carProducts[2].count++;
-    listNum[2].setAttribute("value", carProducts[2]["count"]);
-    subtotalPrice();
-    totalPrice();
-  });
-
-  listReduce[3].addEventListener('click', function () {
-    if(carProducts[3].count > 0) {
-      carProducts[3].count--;
-      listNum[3].setAttribute("value", carProducts[3]["count"]);
-      subtotalPrice();
-      totalPrice();
-    }
-  });
-
-  listPlus[3].addEventListener('click', function () {
-    carProducts[3].count++;
-    listNum[3].setAttribute("value", carProducts[3]["count"]);
-    subtotalPrice();
-    totalPrice();
-  });
-
-  listReduce[4].addEventListener('click', function () {
-    if(carProducts[4].count > 0) {
-      carProducts[4].count--;
-      listNum[4].setAttribute("value", carProducts[4]["count"]);
-      subtotalPrice();
-      totalPrice();
-    }
-  });
-
-  listPlus[4].addEventListener('click', function () {
-    carProducts[4].count++;
-    listNum[4].setAttribute("value", carProducts[4]["count"]);
-    subtotalPrice();
-    totalPrice();
-  });
-
-  listReduce[5].addEventListener('click', function () {
-    if(carProducts[5].count > 0) {
-      carProducts[5].count--;
-      listNum[5].setAttribute("value", carProducts[5]["count"]);
-      subtotalPrice();
-      totalPrice();
-    }
-  });
-
-  listPlus[5].addEventListener('click', function () {
-    carProducts[5].count++;
-    listNum[5].setAttribute("value", carProducts[5]["count"]);
-    subtotalPrice();
-    totalPrice();
-  });
-
-  listAllCheck.addEventListener('click', function () {
-    if (allcheckFlag === 0) {
-      for (var i = 0; i < listLen; i++) {
-        carProducts[i].checked = true;
-        listCheck[i].getElementsByTagName('INPUT')[0].setAttribute("checked", "checked");
+  function isAllCheck() {
+    var checks = tbody.querySelectorAll(".check");
+    var allCheck = tbody.querySelector("#checkAll");
+    for (var i = 0; i < checks.length; i++) {
+      if (checks[i].checked === false) {
+        allCheck.checked = false;
+        break;
       }
-      allcheckFlag = 1;
-    }else{
-      for (var i = 0; i < listLen; i++) {
-        carProducts[i].checked = false;
-        listCheck[i].getElementsByTagName('INPUT')[0].removeAttribute("checked");
-      }
-      allcheckFlag = 0;
-    }
-    totalPrice();
-  }, false);
-
-  //小计
-  function subtotalPrice() {
-    for (var i = 0; i < listLen; i++) {
-      listSubtotal[i].innerHTML = carProducts[i]["count"] * carProducts[i]["price"];
+      allCheck.checked = true;
     }
   }
 
-  //共计
-  function totalPrice() {
+  function updateAllPriceContent() {
+    var checks = tbody.querySelectorAll(".check");
+    var nums = tbody.querySelectorAll(".num");
+    var subtotals = tbody.querySelectorAll(".subtotal");
     var allCount = 0;
     var allPrice = 0;
-    for (var i = 0; i < listLen; i++) {
-      if (carProducts[i].checked === true) {
-        allCount += carProducts[i].count;
-        allPrice += carProducts[i].count * carProducts[i].price;
+    for (var i = 0; i < checks.length; i++) {
+      if (checks[i].checked === true) {
+        allCount += parseInt(nums[i].innerHTML);
+      allPrice += parseInt(subtotals[i].innerHTML);
       }
     }
-    listAllPrice.innerHTML = '共计' + allCount + '商品，' + allPrice + '￥';
+    tbody.querySelector("#allCount").innerHTML = allCount;
+    tbody.querySelector("#allPrice").innerHTML = allPrice;
   }
-  
 };
