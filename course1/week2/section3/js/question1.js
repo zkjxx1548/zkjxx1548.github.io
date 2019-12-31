@@ -102,7 +102,7 @@ window.onload = function () {
         listNum = parseInt(e.target.previousElementSibling.innerHTML) + 1;
         e.target.previousElementSibling.innerHTML = listNum;
       }
-      var listPrice = parseInt(nodeOfTr.querySelector('.price').innerHTML);
+      var listPrice = parseFloat(nodeOfTr.querySelector('.price').innerHTML);
       var listSubtotoal = listNum * listPrice;
       //更新小计
       nodeOfTr.querySelector('.subtotal').innerHTML = listSubtotoal;
@@ -135,7 +135,7 @@ window.onload = function () {
     for (var i = 0; i < checks.length; i++) {
       if (checks[i].checked === true) {
         allCount += parseInt(nums[i].innerHTML);
-      allPrice += parseInt(subtotals[i].innerHTML);
+      allPrice += parseFloat(subtotals[i].innerHTML);
       }
     }
     tbody.querySelector("#allCount").innerHTML = allCount;
