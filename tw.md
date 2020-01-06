@@ -538,6 +538,97 @@ grid-row
 
 5. 关于xhr的status状态的值
 
+## 2020.1.5
+
+1. 多于三个就用switch-case
+2. math.floor向下取整
+3. 倾向于用空间换时间
+
+### 分享之Set
+
+1. set的add()，返回操作之后的set
+2. 没有length属性，有size属性
+3. 判断：has()
+4. 删除：delete()，如果set中没有，返回false，如果有，删除，返回true
+5. add()的链式调用
+6. keys()
+7. values()：6.7一样
+8. entries()
+9. add(数组)，数组存地址，永远不同，用has()也比较地址
+
+#### 转换
+
+1. Array.from(set)
+2. Array(set):X
+3. Array.of(set):X
+4. Array.of(...set):1
+
+#### 原位更改
+
+1. set.map()
+
+### 分享之Map
+
+#### 创建
+
+1. 一个数组算一个key-value，数组有两个值，第一个为key，第二个为value
+2. map.set(key, value)
+
+#### 方法
+
+1. has()：判断是否存在键
+2. key()
+3. value()
+4. entries()
+
+### 分享之异步编程
+
+1. js为单线程
+2. 执行顺序：同步任务-微任务-宏任务
+3. 让异步先执行
+   * 同步函数作为异步函数的回调
+   * addListener
+   * promise()
+
+4. promise对象：
+
+   * 状态：
+     1. 进行中
+     2. 成功
+     3. 失败
+
+   * promise.then是微任务，promise对象在新建的时候就会执行
+   * promise.catch()
+   * promise.finally()
+   * promise.all()
+   * promise.race()
+   * promise.allSettled()
+   * promise.any()
+   * promise.resolve()
+   * promise.reject()
+   * [学习链接](https://cuipengfei.me/blog/2016/05/15/promise/)
+
+5. js任务队列
+
+6. $.ajax和AJAX高混淆了，解决:https://xhr.spec.whatwg.org/#event-handlers
+
+7. switch的写法
+
+   ```js
+   switch (type) {
+   	case type1:
+   	case type2://两种情况执行一种结果
+   		break;
+   	case type3:
+   		break;
+   	default:
+   		
+   }
+   //case一直会往下执行，想阻止要加break，都找不到会执行default
+   ```
+
+   
+
 # 效率
 
 ## 一、vsc
