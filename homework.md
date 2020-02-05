@@ -939,7 +939,200 @@ console.log('Hello World');
      console.log(i); // 5,循环结束后，i并没有消失，泄露成了全局变量。
      ```
 
-     
+# Java部分
 
+## 变量，常量及方法
 
+1. 下面那些是有意义的Java变量名？
+
+   name，userEmail
+
+2. 下面那些是有意义的Java常量名？
+
+   PI，DATABASE_URL
+
+3. 下面那些是有意义的方法名？
+
+   getName，setName，
+
+## 运算符
+
+1. 请指出以下代码片段包含的运算符？
+
+   ```java
+   d += a >= b && !(c instanceof String) ? a++ : b--;
+   ```
+
+   `+=`是赋值运算符
+
+   `>=`是关系运算符
+
+   `&&`是逻辑运算符
+
+   `!`是逻辑运算符
+
+   `?:`是条件运算符
+
+   `--`是算数运算符
+
+   `++`是算数运算符
+
+2. 根据你掌握的运算符知识，回答下面代码的输出：
+
+   ```java
+   int a = 3;
+   int b = 4;
+   b++;
+   System.out.println(b);
+   int result = b*12+(b--)+a*(b--);
+   System.out.println(b);
+   System.out.println(result);
+   ```
+
+   答案：5，3，77
+
+3. 考虑以下代码片段：
+
+   ```
+   int i = 10;
+   int n = i++%5;
+   ```
+
+   - a. 当代码执行后 i 和 n 的值分别是多少，并说明理由
+   - b. 将后缀自增（i++）替换为前缀自增（++i）后， i 和 n 的值又分别是多少，并说明理由
+
+   答：
+
+   * i=11；n = 0；因为i++是先调用i，再改变i的值；
+   * i=11；n = 1；因为++i是先改变i的值，再调用i；
+
+4. 如下代码，请解释数值”6“为什么打印了两遍
+
+   ```java
+   class PrePostDemo {
+       public static void main(String[] args){
+           int i = 3;
+           i++;
+           System.out.println(i);    // "4"
+           ++i;                     
+           System.out.println(i);    // "5"
+           System.out.println(++i);  // "6"
+           System.out.println(i++);  // "6"
+           System.out.println(i);    // "7"
+       }
+   }
+   ```
+
+   第一个6是打印++i，i原本为5，先改变i的值，再打印
+
+   第二个6是打印i++，i原本为6，先调用i打印，再改变的i的值
+
+5. 写一个程序判断一个浮点数是否为0（不能用 == 0 直接判断哦 ）
+
+   ```java
+   public static void isFloatEqual0(double num) {
+       if (Math.abs(num) <= 0.000001) {
+         System.out.println("true");
+       } else {
+         System.out.println("false");
+       }
+   }
+   ```
+
+## Java常见语句
+
+1. 分别用 for 语句和 while 语句写一个无限循环。
+
+   ```java
+   for (int i=0; i>0; i++) {
+       System.out.println("1");
+   }
+   //
+   int i = 1;
+   while (i>0) {
+       System.out.println("1");
+   }
+   ```
+
+2. 写一段代码来区分break和continue跳出循环的方式。
+
+   ```java
+   for (int i=0; i<10; i++) {
+       if (i == 5) {
+           continue;
+       }
+       if (i == 9) {
+           break;
+       }
+       System.out.println(i);
+   }
+   ```
+
+3. 考虑以下代码片段：
+
+   ```java
+   if (aNumber >= 0)
+       if (aNumber == 0)
+           System.out.println("first string");
+   else System.out.println("second string");
+   System.out.println("third string");
+   ```
+
+- a. 当 aNumber = 3 时代码的输出时什么，并解释为什么
+
+  ```java
+  third string
+  ```
+
+- b. 重构代码，使其更容易理解
+
+  ```java
+  if (aNumber == 0) {
+      System.out.println("first string");
+  } else if (aNumber < 0) {
+      System.out.println("second string");
+  }
+  System.out.println("third string");
+  ```
+
+4. 输入三个整数x,y,z，请把这三个数由小到大输出。
+
+   ```java
+   int min = x;
+   int max = y;
+   int mid;
+   if (y < x) {
+       min = y;
+       max = x;
+   }
+   if (z < min) {
+       mid = min;
+       min = z;
+   }else if (z < max) {
+   		mid = z;
+   }else{
+       mid = max;
+       max = z;
+   }
+   System.out.println(min);
+   System.out.println(mid);
+   System.out.println(max);
+   ```
+
+5. 写一个程序，判断一个给定的数是不是质数。
+
+   ```java
+   public static void isPrimeNumber(int num) {
+       System.out.println(Math.sqrt(num));
+       for (int i=2; i <= Math.sqrt(num); i++) {
+         if (num % i == 0) {
+           System.out.println("flase");
+           return;
+         }
+       }
+       System.out.println("true");
+   }
+   ```
+
+   
 
