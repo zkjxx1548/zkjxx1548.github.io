@@ -299,3 +299,31 @@ isReactive(foo.value) // false
 ### toRaw
 
 返回由 `reactive` 或 `readonly` 方法转换成响应式代理的普通对象。这是一个还原方法，可用于临时读取，访问不会被代理/跟踪，写入时也不会触发更改。不建议一直持有原始对象的引用。请谨慎使用。
+
+
+
+# PPT
+
+1. `setup` before `beforeCteate`
+
+2. `setup`return可以为对象和函数
+
+3. `setup`第一参数`props`，解构失去响应式
+
+4. `props`对象不可变
+
+5. `setup`第二参数`context`
+
+6. ### `reactive`
+
+7. ### `ref`
+
+   作为reactive的属性时，调用将会自动解套
+
+8. ### `computed`
+
+9. ### `readonly`
+
+10. ### `watchEffect`
+
+11. ### `watch`
