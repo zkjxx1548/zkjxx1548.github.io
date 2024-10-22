@@ -1,1 +1,1 @@
-My Name is xx, a frontend developer. I have experiences on Mobile and Web. Main tech stack is Flutter and React. And have some experience on agile practices, framework selection, dependency selection, component design, test design, performance optimization.
+My Name is xx, a frontend developer. I have experiences on Mobile and Web. Main tech stack is Flutter and React. And have some experience on agile practices, framework selection, dependency selection, component design, test design and performance optimization.
